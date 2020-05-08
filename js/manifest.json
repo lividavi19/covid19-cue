@@ -1,0 +1,39 @@
+{
+	"name": "COVID-19 CUE",
+	"short_name": "Covid19Cue",
+	"theme_color": "#38003c",
+	"start_url": "../",
+	"background_color": "#38003c",
+	"display": "standalone",
+	"categories": "health",
+	"description": "Get informed of the latest information on COVID19 pandemic. Such as overview on cases, how to prevent the spread, how to protect loved ones from the deadly virus, what to do when you suspect others or yourself having the virus and so on. Together we can fight off the deadly virus.",
+	"icons": [{
+		"src": "../img/icons/icon_48.png",
+		"sizes": "48x48",
+		"type": "image/png"
+	}, {
+		"src": "../img/icons/icon_72.png",
+		"sizes": "72x72",
+		"type": "image/png"
+	}, {
+		"src": "../img/icons/icon_96.png",
+		"sizes": "96x96",
+		"type": "image/png"
+	}, {
+		"src": "../img/icons/icon_144.png",
+		"sizes": "144x144",
+		"type": "image/png"
+	}, {
+		"src": "../img/icons/icon_192.png",
+		"sizes": "192x192",
+		"type": "image/png"
+	}, {
+		"src": "../img/icons/icon_512.png",
+		"sizes": "512x512",
+		"type": "image/png"
+	}, {
+		"src": "../img/icons/icon_1024.png",
+		"sizes": "1024x1024",
+		"type": "image/png"
+	}]
+}

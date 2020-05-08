@@ -1,0 +1,218 @@
+{
+	"about": "This file has countries options to get the covid19 data for.",
+	"current_version": 1,
+	"change_logs": [
+		{
+			"version": 2,
+			"date": "2020-00-00",
+			"description":"TODO: Add some other country options (Northen African countries)"
+		},
+		{
+			"version": 1,
+			"date": "2020-05-05",
+			"description":"First version commit. In this version, each object in the countries array has name, iso2 and slug properties, the countries array itself has East and South African countries."
+		}
+	],
+	"countries": [
+		{
+			"name": "Global",
+			"iso2": "global",
+			"slug": "global"
+		},
+		{
+			"name": "Tanzania",
+			"iso2": "TZ",
+			"slug": "tanzania"
+		},
+		{
+			"name": "Kenya",
+			"iso2": "KE",
+			"slug": "kenya"
+		},
+		{
+			"name": "Uganda",
+			"iso2": "UG",
+			"slug": "uganda"
+		},
+		{
+			"name": "Rwanda",
+			"iso2": "RW",
+			"slug": "rwanda"
+		},
+		{
+			"name": "Burundi",
+			"iso2": "BI",
+			"slug": "burundi"
+		},
+		{
+			"name": "South Sudan",
+			"iso2": "SS",
+			"slug": "south-sudan"
+		},
+		{
+			"name": "Djibouti",
+			"iso2": "DJ",
+			"slug": "djibouti"
+		},
+		{
+			"name": "Eritrea",
+			"iso2": "ER",
+			"slug": "eritrea"
+		},
+		{
+			"name": "Ethiopia",
+			"iso2": "ET",
+			"slug": "ethiopia"
+		},
+		{
+			"name": "Somalia",
+			"iso2": "SO",
+			"slug": "somalia"
+		},
+		{
+			"name": "Comoros",
+			"iso2": "KM",
+			"slug": "comoros"
+		},
+		{
+			"name": "Mauritius",
+			"iso2": "MU",
+			"slug": "mauritius"
+		},
+		{
+			"name": "Seychelles",
+			"iso2": "SC",
+			"slug": "seychelles"
+		},
+		{
+			"name": "Réunion",
+			"iso2": "RE",
+			"slug": "réunion"
+		},
+		{
+			"name": "Mayotte",
+			"iso2": "YT",
+			"slug": "mayotte"
+		},
+		{
+			"name": "Mozambique",
+			"iso2": "MZ",
+			"slug": "mozambique"
+		},
+		{
+			"name": "Madagascar",
+			"iso2": "MG",
+			"slug": "madagascar"
+		},
+		{
+			"name": "Malawi",
+			"iso2": "MW",
+			"slug": "malawi"
+		},
+		{
+			"name": "Zambia",
+			"iso2": "ZM",
+			"slug": "zambia"
+		},
+		{
+			"name": "Zimbabwe",
+			"iso2": "ZW",
+			"slug": "zimbabwe"
+		},
+		{
+			"name": "Democratic Republic of the Congo (Kinshasa)",
+			"iso2": "CD",
+			"slug": "congo"
+		},
+		{
+			"name": "Sudan",
+			"iso2": "SD",
+			"slug": "sudan"
+		},
+		{
+			"name": "Republic of the Congo (Brazzaville)",
+			"iso2": "CG",
+			"slug": "congo"
+		},
+		{
+			"name": "South Africa",
+			"iso2": "ZA",
+			"slug": "south-africa"
+		},
+		{
+			"name": "Angola",
+			"iso2": "AO",
+			"slug": "angola"
+		},
+		{
+			"name": "Namibia",
+			"iso2": "NA",
+			"slug": "namibia"
+		},
+		{
+			"name": "Botswana",
+			"iso2": "BW",
+			"slug": "botswana"
+		},
+		{
+			"name": "Ghana",
+			"iso2": "GH",
+			"slug": "ghana"
+		},
+		{
+			"name": "Senegal",
+			"iso2": "SN",
+			"slug": "senegal"
+		},
+		{
+			"name": "Nigeria",
+			"iso2": "NG",
+			"slug": "nigeria"
+		},
+		{
+			"name": "Tunisia",
+			"iso2": "TN",
+			"slug": "tunisia"
+		},
+		{
+			"name": "Egypt",
+			"iso2": "EG",
+			"slug": "egypt"
+		},
+		{
+			"name": "Algeria",
+			"iso2": "DZ",
+			"slug": "algeria"
+		},
+		{
+			"name": "Italy",
+			"iso2": "IT",
+			"slug": "italy"
+		},
+		{
+			"name": "Spain",
+			"iso2": "ES",
+			"slug": "spain"
+		},
+		{
+			"name": "Canada",
+			"iso2": "CA",
+			"slug": "canada"
+		},
+		{
+			"name": "China",
+			"iso2": "CN",
+			"slug": "china"
+		},
+		{
+			"name": "United States of America",
+			"iso2": "US",
+			"slug": "united-states"
+		},
+		{
+			"name": "United Kingdom",
+			"iso2": "GB",
+			"slug": "united-kingdom"
+		}
+	]
+}
