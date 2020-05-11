@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Covid19Cue</title>
+	<link rel="icon" href="img/icons/icon_192.png">
+	<!-- set PWA -->
+	<link rel="manifest" href="js/manifest.json">
+	<meta name="theme-color" content="#38003c">
+	<!-- end PWA -->
+	<!-- iOS support -->
+	<link rel="apple-touch-icon" href="img/icons/icon_192.png">
+	<meta name="apple-mobile-app-status-bar" content="#38003c">
+	<!-- end iOS support -->
+	<meta name="author" content="David LS(RUCU)">
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/news.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2">
+	<meta name="description" content="Get informed of the latest information on COVID19 pandemic. Such as overview on cases, how to prevent the spread, how to protect loved ones from the deadly virus, what to do when you suspect others or yourself having the virus and so on. Together we can fight off the deadly virus.">
+</head>
+<body>
+	<header class="flex_middle theme_bg">
+		<div class="app_icon"><img src="img/icons/icon_192.png" alt="corona virus icon" class="full_dims"></div>
+	</header>
+	<select id="select_country" onchange="statsAsyncTask(this.value)" class="full_w"></select>
+	<main>
+		<!-- numbers section -->
+		<section class="case_numbers">
+			<div class="case_container">
+				<span id="total_confirmed_number">...</span>
+				<span>Maambukizi</span>
+			</div>
+			<div class="case_container">
+				<span id="new_confirmed_number">...</span>
+				<span>Maambukizi mapya</span>
+			</div>
+
+			<div class="case_container">
+				<span id="total_deaths_number">...</span>
+				<span>Vifo</span>
+			</div>
+			<div class="case_container">
+				<span id="new_deaths_number">...</span>
+				<span>Vifo vipya</span>
+			</div>
+
+			<div class="case_container">
+				<span id="total_reccovered_number">...</span>
+				<span>Waliopona</span>
+			</div>
+			<div class="case_container">
+				<span id="new_reccovered_number">...</span>
+				<span>Waliopona wapya</span>
+			</div>
+		</section>
+
+		<!-- news section -->
+		<span>NEWS</span>
+		<section>
+			<div class="news_sect">
+				<span class="new_title">WHO announces COVID-19 outbreak a pandemic</span>
+				<div>
+					<span class="new_intro">Today, as WHO/Europe’s Standing Committee of the Regional Committee met, Dr Hans Henri P. Kluge, WHO Regional Director for Europe, briefed the group on the rapid escalation of COVID-19 in the WHO European Region, now placing it at the centre of this pandemic.</span>
+				</div>
+				<a href="">Read More</a>
+			</div>
+
+			<div class="news_sect">
+				<span class="new_title">WHO announces COVID-19 outbreak a pandemic</span>
+				<div>
+					<span class="new_intro">Today, as WHO/Europe’s Standing Committee of the Regional Committee met, Dr Hans Henri P. Kluge, WHO Regional Director for Europe, briefed the group on the rapid escalation of COVID-19 in the WHO European Region, now placing it at the centre of this pandemic.</span>
+				</div>
+				<a href="">Read More</a>
+			</div>
+			
+			<div class="news_sect">
+				<span class="new_title">WHO announces COVID-19 outbreak a pandemic</span>
+				<div>
+					<span class="new_intro">Today, as WHO/Europe’s Standing Committee of the Regional Committee met, Dr Hans Henri P. Kluge, WHO Regional Director for Europe, briefed the group on the rapid escalation of COVID-19 in the WHO European Region, now placing it at the centre of this pandemic.</span>
+				</div>
+				<a href="">Read More</a>
+			</div>
+		</section>
+	</main>
+</body>
+<script src="js/base.js"></script>
+<script src="js/async_task.js"></script>
+<script src="sw.js"></script>
+<script>
+	// execute some callbacks (statsAsyncTask('TZ') & newsAsyncTask('global')) when the page loads
+	window.onload = () => {
+		countriesAsyncTask()
+		statsAsyncTask('TZ')
+		// newsAsyncTask('global')
+	}
+</script>
+</html>
