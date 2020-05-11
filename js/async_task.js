@@ -32,11 +32,13 @@ function countriesAsyncTask () {
 				}
 			})
 		} else {
-			console.log('Error '+res.status+': '+res.statusText)
+			// console.log('Error '+res.status+': '+res.statusText)
+			console.log(res)
 		}
 	})
 	.catch(err=>{
-		console.log('Error: '+err.status+': '+err.statusText)
+		// console.log('Error: '+err.status+': '+err.statusText)
+		console.log(err)
 	})
 }
 
@@ -87,7 +89,8 @@ function statsAsyncTask (location) {
 		}
 	})
 	.catch(err=>{
-		console.log('Error: '+err.status+': '+err.statusText)
+		// console.log('Error: '+err.status+': '+err.statusText)
+		console.log(err)
 
 		getNode('#total_confirmed_number').innerText='-'
 		getNode('#new_confirmed_number').innerText='-'
@@ -118,10 +121,12 @@ function newsAsyncTask (location) {
 				console.log(data)
 			})
 		} else {
-			console.log('Error '+res.status+': '+res.statusText)
+			// console.log('Error '+res.status+': '+res.statusText)
+			console.log(res)
 		}
 	})
 	.catch(err=>{
-		console.log('Error: '+err.status+': '+err.statusText)
+		// console.log('Error: '+err.status+': '+err.statusText)
+		console.log(err)
 	})
 }
