@@ -16,6 +16,11 @@
 	<link rel="stylesheet" type="text/css" href="css/base.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2">
 	<meta name="description" content="Get informed of the latest information on COVID19 pandemic. Such as overview on cases, how to prevent the spread, how to protect loved ones from the deadly virus, what to do when you suspect others or yourself having the virus and so on. Together we can fight off the deadly virus.">
+	<!-- og tags -->
+	<meta property="og:title" content="Covid19Cue">
+	<meta property="og:image" content="img/icons/icon_192.png">
+	<meta property="og:description" content="Get informed of the latest information on COVID19 pandemic. Such as overview on cases, how to prevent the spread, how to protect loved ones from the deadly virus, what to do when you suspect others or yourself having the virus and so on. Together we can fight off the deadly virus.img/icons/icon_192.png">
+	<!-- ends og tags -->
 </head>
 <body>
 	<header class="flex_middle theme_bg">
@@ -23,6 +28,7 @@
 	</header>
 	<select id="select_country" onchange="statsAsyncTask(this.value)" class="full_w"></select>
 	<main>
+		<!-- numbers section -->
 		<section class="case_numbers">
 			<div class="case_container">
 				<span id="total_confirmed_number">...</span>
@@ -51,6 +57,8 @@
 				<span>Waliopona wapya</span>
 			</div>
 		</section>
+
+		<!-- news section -->
 	</main>
 </body>
 <script src="js/base.js"></script>
