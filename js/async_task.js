@@ -75,7 +75,8 @@ function statsAsyncTask (location) {
 				getNode('#new_deaths_number').innerText=data.stats.newDeaths
 			})
 		} else {
-			console.log('Error '+res.status+': '+res.statusText)
+			// console.log('Error '+res.status+': '+res.statusText)
+			console.log(res)
 
 			getNode('#total_confirmed_number').innerText='-'
 			getNode('#new_confirmed_number').innerText='-'
