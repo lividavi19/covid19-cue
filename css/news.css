@@ -1,0 +1,20 @@
+.news_sect{
+	margin: 0 auto .5em;
+	padding: .5em 1em;
+	border-bottom: .1em solid #ccc;
+}
+.news_sect:last-child{
+	border-bottom: 0;
+}
+.new_title{
+	color: #555;
+	font-weight: bold;
+	font-size: 1.1em;
+	text-transform: uppercase;
+}
+.new_intro{
+	color: #333;
+}
+.news_sect a{
+	margin: .2em auto;
+}
