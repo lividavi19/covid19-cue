@@ -128,6 +128,46 @@ function newsAsyncTask (location) {
 				const UPDATED_TIME = data.updatedDateTime
 				const NEWS_ARRAY = data.news
 				console.log(NEWS_ARRAY)
+
+				// appendin news stuffs
+				for(i in NEWS_ARRAY){
+					// console.log(NEWS_ARRAY[i].excerpt)
+					// create span and p tags
+					new_title = document.createElement('span')
+					new_title.classList.add('new_title')
+					new_title.classList.add('text_uppercase')
+					new_title.innerText = NEWS_ARRAY[i].title
+
+					new_excerpt = document.createElement('p')
+					new_excerpt.classList.add('new_excerpt')
+					new_excerpt.innerText = NEWS_ARRAY[i].excerpt
+
+					// create .new_body div
+					new_body = document.createElement('div')
+					new_body.classList.add('new_body')
+					// append
+					new_body.appendChild(new_title)
+					new_body.appendChild(new_excerpt)
+
+					// create a and button elements
+					button = document.createElement('button')
+					button.classList.add('pointer')
+					button.classList.add('text_capitalize')
+					button.innerText = 'Read More'
+					new_link = document.createElement('a')
+					new_link.appendChild(button)
+					new_link.href = NEWS_ARRAY[i].ampWebUrl
+
+					// create .a_new div
+					a_new = document.createElement('div')
+					a_new.classList.add('a_new')
+					// append
+					a_new.appendChild(new_body)
+					a_new.appendChild(new_link)
+
+					// append into section
+					getNode('#news_sect').appendChild(a_new)
+				}
 			})
 		} else {
 			// console.log('Error '+res.status+': '+res.statusText)
