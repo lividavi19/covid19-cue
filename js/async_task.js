@@ -70,7 +70,7 @@ function statsAsyncTask (location) {
 				// console.log(data)
 				const updatedDateTime = new Date(data.updatedDateTime)
 				const FORMATED_DATE_TIME = updatedDateTime.getFullYear()+'-'+(updatedDateTime.getMonth()+1)+'-'+updatedDateTime.getDate()+' '+updatedDateTime.getHours()+':'+updatedDateTime.getMinutes()+':'+updatedDateTime.getSeconds()
-				console.log('last_updated: '+FORMATED_DATE_TIME)
+				// console.log('last_updated: '+FORMATED_DATE_TIME)
 
 				getNode('#total_confirmed_number').innerText=data.stats.totalConfirmedCases
 				getNode('#new_confirmed_number').innerText=data.stats.newlyConfirmedCases
@@ -124,7 +124,10 @@ function newsAsyncTask (location) {
 			res.text()
 			.then(data=>{
 				data = JSON.parse(data)
-				console.log(data)
+				// console.log(data)
+				const UPDATED_TIME = data.updatedDateTime
+				const NEWS_ARRAY = data.news
+				console.log(NEWS_ARRAY)
 			})
 		} else {
 			// console.log('Error '+res.status+': '+res.statusText)
