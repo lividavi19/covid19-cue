@@ -3,13 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<title>Covid19Cue</title>
-	<link rel="icon" href="img/icons/icon_192.png">
+	<link rel="icon" href="img/icons/icon_256.png">
 	<!-- set PWA -->
 	<link rel="manifest" href="js/manifest.json">
 	<meta name="theme-color" content="#38003c">
 	<!-- end PWA -->
 	<!-- iOS support -->
-	<link rel="apple-touch-icon" href="img/icons/icon_192.png">
+	<link rel="apple-touch-icon" href="img/icons/icon_256.png">
 	<meta name="apple-mobile-app-status-bar" content="#38003c">
 	<!-- end iOS support -->
 	<meta name="author" content="David LS(RUCU)">
@@ -17,14 +17,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2">
 	<meta name="description" content="Get informed of the latest information on COVID19 pandemic. Such as overview on cases, how to prevent the spread, how to protect loved ones from the deadly virus, what to do when you suspect others or yourself having the virus and so on. Together we can fight off the deadly virus.">
 	<!-- og tags -->
+	<meta property="og:type" content="website">
 	<meta property="og:title" content="Covid19Cue">
-	<meta property="og:image" content="img/icons/icon_192.png">
-	<meta property="og:description" content="Get informed of the latest information on COVID19 pandemic. Such as overview on cases, how to prevent the spread, how to protect loved ones from the deadly virus, what to do when you suspect others or yourself having the virus and so on. Together we can fight off the deadly virus.img/icons/icon_192.png">
+	<meta property="og:image" content="https://covid19cue.netlify.app/img/icons/icon_256.png">
+	<meta property="og:url" content="https://covid19cue.netlify.app/">
+	<meta property="og:description" content="Get informed of the latest information on COVID19 pandemic. Such as overview on cases, how to prevent the spread, how to protect loved ones from the deadly virus, what to do when you suspect others or yourself having the virus and so on. Together we can fight off the deadly virus.">
 	<!-- ends og tags -->
 </head>
 <body>
 	<header class="flex_middle theme_bg">
-		<div class="app_icon"><img src="img/icons/icon_192.png" alt="corona virus icon" class="full_dims"></div>
+		<div class="app_icon"><img src="img/icons/icon_256.png" alt="corona virus icon" class="full_dims"></div>
 	</header>
 	<select id="select_country" onchange="statsAsyncTask(this.value)" class="full_w"></select>
 	<main>
