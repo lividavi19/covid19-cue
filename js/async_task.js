@@ -45,6 +45,7 @@ function countriesAsyncTask () {
 // THE STATS ENDPOINT
 function statsAsyncTask (location) {
 	// initialize loading signal
+	getNode('#last_updated_number').innerText='...'
 	getNode('#total_confirmed_number').innerText='...'
 	getNode('#new_confirmed_number').innerText='...'
 	getNode('#total_reccovered_number').innerText='...'
@@ -67,7 +68,9 @@ function statsAsyncTask (location) {
 			.then(data=>{
 				data = JSON.parse(data)
 				// console.log(data)
-				console.log('last_updated: '+data.updatedDateTime)
+				const updatedDateTime = new Date(data.updatedDateTime)
+				const FORMATED_DATE_TIME = updatedDateTime.getFullYear()+'-'+(updatedDateTime.getMonth()+1)+'-'+updatedDateTime.getDate()+' '+updatedDateTime.getHours()+':'+updatedDateTime.getMinutes()+':'+updatedDateTime.getSeconds()
+				console.log('last_updated: '+FORMATED_DATE_TIME)
 
 				getNode('#total_confirmed_number').innerText=data.stats.totalConfirmedCases
 				getNode('#new_confirmed_number').innerText=data.stats.newlyConfirmedCases
@@ -75,6 +78,7 @@ function statsAsyncTask (location) {
 				getNode('#new_reccovered_number').innerText=data.stats.newlyRecoveredCases
 				getNode('#total_deaths_number').innerText=data.stats.totalDeaths
 				getNode('#new_deaths_number').innerText=data.stats.newDeaths
+				getNode('#last_updated_number').innerText=FORMATED_DATE_TIME
 			})
 		} else {
 			// console.log('Error '+res.status+': '+res.statusText)
@@ -86,6 +90,7 @@ function statsAsyncTask (location) {
 			getNode('#new_reccovered_number').innerText='-'
 			getNode('#total_deaths_number').innerText='-'
 			getNode('#new_deaths_number').innerText='-'
+			getNode('#last_updated_number').innerText='-'
 		}
 	})
 	.catch(err=>{
@@ -98,6 +103,7 @@ function statsAsyncTask (location) {
 		getNode('#new_reccovered_number').innerText='-'
 		getNode('#total_deaths_number').innerText='-'
 		getNode('#new_deaths_number').innerText='-'
+		getNode('#last_updated_number').innerText='-'
 	})
 }
 
