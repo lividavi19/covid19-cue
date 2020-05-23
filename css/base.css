@@ -37,16 +37,14 @@ header .app_icon{
 	object-fit: contain;
 }
 
-#select_country{
-	padding: 1em .2em;
-}
+#select_country{padding: 1em .2em;}
 
 /*MAIN*/
-main{margin: 0 .1em;}
+main{margin: 0 auto;}
 main .case_container{
 	display: flex;
 	margin: 0 auto .2em;
-	padding: 2em 0;
+	padding: 4em .2em;
 	animation: anim .4s;
 	flex-flow: column wrap;
 	border-bottom: .1em solid #ccc;
@@ -55,16 +53,16 @@ main .case_container:last-child{border-bottom: none;}
 main .case_container span{text-align: center;}
 main .case_container span:first-child{
 	color: #555;
-	font-size: 1em;
+	font-size: .8em;
 }
 main .case_container span:last-child{
 	color: #333;
-	font-size: 1.1em;
+	font-size: .8em;
 	word-spacing: .2em;
 	letter-spacing: .1em;
 	text-transform: uppercase;
 }
-section{padding: .5em 1em;}
+/*section{padding: 0 1em;}*/
 section .section_title{
 	font-weight: bold;
 	text-align: center;
@@ -73,27 +71,10 @@ section .section_title{
 /**
 * for wider screens
 */
-@media(min-width: 801px){
-	main{
-		width: 90%;
-		margin: 0 auto;
-	}
-}
-@media(min-width: 1001px){
-	main{width: 70%;}
-}
-@media(min-width: 1201px){
-	main{width: 60%;}
-}
-@media(min-width: 1401px){
-	main{width: 55%;}
-}
-@media(min-width: 1501px){
-	main{width: 40%;}
-}
+@media(min-width: 1001px){main{width: 30%;}}
+@media(min-width: 1200px){main{width: 25%;}}
+@media(min-width: 1400px){main{width: 20%;}}
+@media(min-width: 1500px){main{width: 15%;}}
 
 /*animations*/
-@keyframes anim{
-	from{opacity: 0;}
-	to{opacity: 1;}
-}
+@keyframes anim{from{opacity: 0;}to{opacity: 1;}}
