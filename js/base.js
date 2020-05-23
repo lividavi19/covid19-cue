@@ -6,6 +6,7 @@ function showBlockNode (e) {e.style.display='block';}
 function nodeFlexVisible (e) {e.style.display=='flex';}
 function nodeBlockVisible (e) {e.style.display=='block';}
 function nodeHidden (e) {e.style.display=='none';}
+function preppendZero (i) {return i<10 ? `0${i}` : i}
 
 // register a service worker
 function registerServiceWorker () {
