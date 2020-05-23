@@ -69,7 +69,7 @@ function statsAsyncTask (location) {
 				data = JSON.parse(data)
 				// console.log(data)
 				const updatedDateTime = new Date(data.updatedDateTime)
-				const FORMATED_DATE_TIME = updatedDateTime.getFullYear()+'-'+(updatedDateTime.getMonth()+1)+'-'+updatedDateTime.getDate()+' '+updatedDateTime.getHours()+':'+updatedDateTime.getMinutes()+':'+updatedDateTime.getSeconds()
+				const FORMATED_DATE_TIME = updatedDateTime.getFullYear()+'-'+preppendZero((updatedDateTime.getMonth()+1))+'-'+preppendZero(updatedDateTime.getDate())+' '+preppendZero(updatedDateTime.getHours())+':'+preppendZero(updatedDateTime.getMinutes())+':'+preppendZero(updatedDateTime.getSeconds())
 				// console.log('last_updated: '+FORMATED_DATE_TIME)
 
 				getNode('#total_confirmed_number').innerText=data.stats.totalConfirmedCases
@@ -127,7 +127,7 @@ function newsAsyncTask (location) {
 				// console.log(data)
 				const UPDATED_TIME = data.updatedDateTime
 				const NEWS_ARRAY = data.news
-				console.log(NEWS_ARRAY)
+				// console.log(NEWS_ARRAY)
 
 				// appendin news stuffs
 				for(i in NEWS_ARRAY){
