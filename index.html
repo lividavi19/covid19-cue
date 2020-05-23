@@ -65,15 +65,14 @@
 		</section>
 	</main>
 </body>
-<script src="js/base.js"></script>
-<script src="js/async_task.js"></script>
-<script src="sw.js"></script>
+<script defer src="js/base.js"></script>
+<script defer src="js/async_task.js"></script>
+<script defer src="sw.js"></script>
 <script>
 	// execute some callbacks (statsAsyncTask('TZ') & newsAsyncTask('global')) when the page loads
 	window.onload = () => {
 		countriesAsyncTask()
 		statsAsyncTask('TZ')
-		// newsAsyncTask('global')
 	}
 </script>
 </html>
