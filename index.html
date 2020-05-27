@@ -74,5 +74,98 @@
 		countriesAsyncTask()
 		statsAsyncTask('TZ')
 	}
+
+	// countriesAsyncTask method
+	function countriesAsyncTask () {
+		const task = new AsyncTask({
+			'url': `js/countries.json`,
+			'method': `get`
+		});
+
+		task.execute().then(response=> {
+			if (response.status) {
+				const data = JSON.parse(response.data);
+
+				const countries = data.countries;
+				for(i in countries) {
+					// create new 'option' element, then add 'value' and 'text' attributes to it
+					const country_options = document.createElement('option')
+					country_options.value = countries[i].iso2
+					country_options.text = countries[i].name
+
+					// pre select tanzania option
+					getNode('#select_country').value = 'TZ'
+
+					// append the #country_options into #select_country
+					getNode('#select_country').appendChild(country_options)
+				}
+			} else {
+				// error occured
+				// console.log(response);
+			}
+		}).catch(error=>{
+			// error occured
+			// console.log(error);
+		});
+	}
+
+	// statsAsyncTask method
+	function statsAsyncTask (location) {
+		getNode('#total_confirmed_number').innerText=`...`
+		getNode('#new_confirmed_number').innerText=`...`
+		getNode('#total_reccovered_number').innerText=`...`
+		getNode('#new_reccovered_number').innerText=`...`
+		getNode('#total_deaths_number').innerText=`...`
+		getNode('#new_deaths_number').innerText=`...`
+		getNode('#last_updated_number').innerText=`...`
+		const task = new AsyncTask({
+			'url': `https://api.smartable.ai/coronavirus/stats/${location}`,
+			'method': `get`,
+			'headers': {
+				'Cache-Control': 'no-cache',
+				'Subscription-Key': `b0aaacac86f44d898bf1b2df828f61dc`
+			}
+		});
+
+		task.execute().then(response=>{
+			if (response.status) {
+				const data = JSON.parse(response.data);
+				// console.log(data);
+
+				const updatedDateTime = new Date(data.updatedDateTime);
+				const FORMATED_DATE_TIME = updatedDateTime.getFullYear()+'-'+preppendZero((updatedDateTime.getMonth()+1))+'-'+preppendZero(updatedDateTime.getDate())+' '+preppendZero(updatedDateTime.getHours())+':'+preppendZero(updatedDateTime.getMinutes())+':'+preppendZero(updatedDateTime.getSeconds());
+
+				getNode('#total_confirmed_number').innerText=data.stats.totalConfirmedCases
+				getNode('#new_confirmed_number').innerText=data.stats.newlyConfirmedCases
+				getNode('#total_reccovered_number').innerText=data.stats.totalRecoveredCases
+				getNode('#new_reccovered_number').innerText=data.stats.newlyRecoveredCases
+				getNode('#total_deaths_number').innerText=data.stats.totalDeaths
+				getNode('#new_deaths_number').innerText=data.stats.newDeaths
+				getNode('#last_updated_number').innerText=FORMATED_DATE_TIME
+			} else {
+				// error occured
+				console.log(response);
+
+				getNode('#total_confirmed_number').innerText=`-`
+				getNode('#new_confirmed_number').innerText=`-`
+				getNode('#total_reccovered_number').innerText=`-`
+				getNode('#new_reccovered_number').innerText=`-`
+				getNode('#total_deaths_number').innerText=`-`
+				getNode('#new_deaths_number').innerText=`-`
+				getNode('#last_updated_number').innerText=`-`
+			}
+		}).catch(error=>{
+			// error occured
+			console.log(error);
+
+			getNode('#total_confirmed_number').innerText=`-`
+			getNode('#new_confirmed_number').innerText=`-`
+			getNode('#total_reccovered_number').innerText=`-`
+			getNode('#new_reccovered_number').innerText=`-`
+			getNode('#total_deaths_number').innerText=`-`
+			getNode('#new_deaths_number').innerText=`-`
+			getNode('#last_updated_number').innerText=`-`
+		});
+	}
 </script>
 </html>
