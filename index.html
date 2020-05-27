@@ -73,7 +73,7 @@
 	window.onload = () => {
 		loadCountries()
 		loadStats('TZ')
-	}
+	};
 
 	// loadCountries()
 	function loadCountries () {
@@ -101,11 +101,11 @@
 				}
 			} else {
 				// error occured
-				// console.log(response);
+				console.log(response);
 			}
 		}).catch(error=>{
 			// error occured
-			// console.log(error);
+			console.log(error);
 		});
 	}
 
