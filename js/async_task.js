@@ -1,5 +1,5 @@
 class AsyncTask {
-	// constructor
+	// constructor method
 	constructor (details) {
 		this.url = details.url;
 		this.method = details.method;
@@ -7,7 +7,7 @@ class AsyncTask {
 		this.headers = details.headers;
 	}
 
-	// execute
+	// execute method
 	execute () {
 		return new Promise ((resolve, reject) => {
 			// create xhr object
