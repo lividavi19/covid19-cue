@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +29,7 @@
 	<header class="flex_middle theme_bg">
 		<div class="app_icon"><img src="img/icons/icon_256.png" alt="corona virus icon" class="full_dims"></div>
 	</header>
-	<select id="select_country" onchange="statsAsyncTask(this.value)" class="full_w"></select>
+	<select id="select_country" onchange="loadStats(this.value)" class="full_w"></select>
 	<main>
 		<!-- numbers section -->
 		<section class="case_numbers">
@@ -69,14 +70,13 @@
 <script defer src="js/async_task.js"></script>
 <script defer src="sw.js"></script>
 <script>
-	// execute some callbacks (statsAsyncTask('TZ') & newsAsyncTask('global')) when the page loads
 	window.onload = () => {
-		countriesAsyncTask()
-		statsAsyncTask('TZ')
+		loadCountries()
+		loadStats('TZ')
 	}
 
-	// countriesAsyncTask method
-	function countriesAsyncTask () {
+	// loadCountries()
+	function loadCountries () {
 		const task = new AsyncTask({
 			'url': `js/countries.json`,
 			'method': `get`
@@ -109,8 +109,8 @@
 		});
 	}
 
-	// statsAsyncTask method
-	function statsAsyncTask (location) {
+	// loadStats()
+	function loadStats (location) {
 		getNode('#total_confirmed_number').innerText=`...`
 		getNode('#new_confirmed_number').innerText=`...`
 		getNode('#total_reccovered_number').innerText=`...`
