@@ -6,7 +6,7 @@ const STATIC_CACHE_NAME = 'Covid19Cue-static-cache-v1';
 // files to pre-cache
 const FILES_TO_PRECATCHE = [
 	'offline.html',
-	'img/icons/icon_192.png'
+	'img/icons/icon_256.png'
 ];
 
 // install the service worker
