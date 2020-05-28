@@ -33,7 +33,7 @@ class AsyncTask {
 				} else {
 					reject({
 						'status': false,
-						'message': `Error ${xhr.status}, ${xhr.statusText}`,
+						'message': `Error ${xhr.status}: ${xhr.statusText}`,
 						'data': xhr
 					});
 				}
