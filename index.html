@@ -93,7 +93,7 @@
 					country_options.text = countries[i].name;
 
 					// pre select tanzania option
-					getNode('#select_country').value = 'TZ';
+					getNode('#select_country').value = `TZ`;
 
 					// append the #country_options into #select_country
 					getNode('#select_country').appendChild(country_options);
@@ -132,7 +132,7 @@
 				// console.log(data);
 
 				const updatedDateTime = new Date(data.updatedDateTime);
-				const FORMATED_DATE_TIME = updatedDateTime.getFullYear()+'-'+preppendZero((updatedDateTime.getMonth()+1))+'-'+preppendZero(updatedDateTime.getDate())+' '+preppendZero(updatedDateTime.getHours())+':'+preppendZero(updatedDateTime.getMinutes())+':'+preppendZero(updatedDateTime.getSeconds());
+				const FORMATED_DATE_TIME = `${updatedDateTime.getFullYear()}-${preppendZero((updatedDateTime.getMonth()+1))}-${preppendZero(updatedDateTime.getDate())} ${preppendZero(updatedDateTime.getHours())}:${preppendZero(updatedDateTime.getMinutes())}:${preppendZero(updatedDateTime.getSeconds())}`;
 
 				getNode('#total_confirmed_number').innerText=data.stats.totalConfirmedCases;
 				getNode('#new_confirmed_number').innerText=data.stats.newlyConfirmedCases;
