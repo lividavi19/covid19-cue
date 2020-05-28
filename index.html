@@ -71,7 +71,7 @@
 <script>
 	window.onload = () => {
 		loadCountries();
-		loadStats('TZ');
+		loadStats(`TZ`);
 	};
 
 	// loadCountries()
@@ -88,7 +88,7 @@
 				const countries = data.countries;
 				for(i in countries) {
 					// create new 'option' element, then add 'value' and 'text' attributes to it
-					const country_options = document.createElement('option');
+					const country_options = document.createElement(`option`);
 					country_options.value = countries[i].iso2;
 					country_options.text = countries[i].name;
 
