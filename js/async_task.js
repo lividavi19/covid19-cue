@@ -3,7 +3,6 @@ class AsyncTask {
 	constructor (details) {
 		this.url = details.url;
 		this.method = details.method;
-		this.data = details.data;
 		this.headers = details.headers;
 	}
 
@@ -22,12 +21,7 @@ class AsyncTask {
 			}
 
 			// send request
-			if (this.method==='post') {
-				xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-				xhr.send(this.data);
-			} else {
-				xhr.send();
-			}
+			xhr.send();
 
 			// on request completion
 			xhr.onload = () => {
