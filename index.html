@@ -132,7 +132,7 @@
 				// console.log(data);
 
 				const updatedDateTime = new Date(data.updatedDateTime);
-				const FORMATED_DATE_TIME = `${updatedDateTime.getFullYear()}-${preppendZero((updatedDateTime.getMonth()+1))}-${preppendZero(updatedDateTime.getDate())} ${preppendZero(updatedDateTime.getHours())}:${preppendZero(updatedDateTime.getMinutes())}:${preppendZero(updatedDateTime.getSeconds())}`;
+				const formated_date_time = `${updatedDateTime.getFullYear()}-${preppendZero((updatedDateTime.getMonth()+1))}-${preppendZero(updatedDateTime.getDate())} ${preppendZero(updatedDateTime.getHours())}:${preppendZero(updatedDateTime.getMinutes())}:${preppendZero(updatedDateTime.getSeconds())}`;
 
 				getNode('#total_confirmed_number').innerText=data.stats.totalConfirmedCases;
 				getNode('#new_confirmed_number').innerText=data.stats.newlyConfirmedCases;
@@ -140,7 +140,7 @@
 				getNode('#new_reccovered_number').innerText=data.stats.newlyRecoveredCases;
 				getNode('#total_deaths_number').innerText=data.stats.totalDeaths;
 				getNode('#new_deaths_number').innerText=data.stats.newDeaths;
-				getNode('#last_updated_number').innerText=FORMATED_DATE_TIME;
+				getNode('#last_updated_number').innerText=formated_date_time;
 			} else {
 				// error occured
 				console.log(response);
