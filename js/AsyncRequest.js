@@ -23,7 +23,7 @@ class AsyncRequest {
 
 			// send request
 			if (this.method === 'post') {
-				xhr.send(this.data);
+				xhr.send(this.body);
 			} else {
 				xhr.send();
 			}
