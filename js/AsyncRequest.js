@@ -2,7 +2,8 @@ class AsyncRequest {
 	// constructor method
 	constructor (details) {
 		this.url = details.url;
-		this.method = details.method;
+		this.method = details.method.toLowerCase();
+		this.data = details.data;
 		this.headers = details.headers;
 	}
 
@@ -21,11 +22,15 @@ class AsyncRequest {
 			}
 
 			// send request
-			xhr.send();
+			if (this.method === 'post') {
+				xhr.send(this.data);
+			} else {
+				xhr.send();
+			}
 
 			// on request completion
 			xhr.onload = () => {
-				if (xhr.status===200) {
+				if (xhr.status === 200) {
 					resolve({
 						'status': true,
 						'data': xhr.responseText
@@ -33,8 +38,8 @@ class AsyncRequest {
 				} else {
 					reject({
 						'status': false,
-						'message': `Error ${xhr.status}: ${xhr.statusText}`,
-						'data': xhr
+						'data': xhr,
+						'message': `Error ${xhr.status}: ${xhr.statusText}`
 					});
 				}
 			};
@@ -43,8 +48,8 @@ class AsyncRequest {
 			xhr.onerror = () => {
 				reject({
 					'status': false,
-					'message': `Network error occured while making the request`,
-					'data': xhr
+					'data': xhr,
+					'message': `Network error occured while making the request`
 				});
 			};
 		});
