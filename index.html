@@ -66,7 +66,7 @@
 	</main>
 </body>
 <script defer src="js/base.js"></script>
-<script defer src="js/AsyncTask.js"></script>
+<script defer src="js/AsyncRequest.js"></script>
 <script defer src="sw.js"></script>
 <script>
 	window.onload = () => {
@@ -76,12 +76,12 @@
 
 	// loadCountries()
 	function loadCountries () {
-		const task = new AsyncTask({
+		const request = new AsyncRequest({
 			'url': `js/countries.json`,
 			'method': `get`
 		});
 
-		task.execute().then(response=> {
+		request.execute().then(response=> {
 			if (response.status) {
 				const data = JSON.parse(response.data);
 
@@ -117,7 +117,7 @@
 		getNode('#total_deaths_number').innerText=`...`;
 		getNode('#new_deaths_number').innerText=`...`;
 		getNode('#last_updated_number').innerText=`...`;
-		const task = new AsyncTask({
+		const request = new AsyncRequest({
 			'url': `https://api.smartable.ai/coronavirus/stats/${location}`,
 			'method': `get`,
 			'headers': {
@@ -126,7 +126,7 @@
 			}
 		});
 
-		task.execute().then(response=>{
+		request.execute().then(response=>{
 			if (response.status) {
 				const data = JSON.parse(response.data);
 				// console.log(data);
