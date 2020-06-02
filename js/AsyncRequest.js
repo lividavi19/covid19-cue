@@ -3,7 +3,7 @@ class AsyncRequest {
 	constructor (details) {
 		this.url = details.url;
 		this.method = details.method.toLowerCase();
-		this.data = details.data;
+		this.body = details.body;
 		this.headers = details.headers;
 	}
 
@@ -33,12 +33,12 @@ class AsyncRequest {
 				if (xhr.status === 200) {
 					resolve({
 						'status': true,
-						'data': xhr.responseText
+						'body': xhr.responseText
 					});
 				} else {
 					reject({
 						'status': false,
-						'data': xhr,
+						'body': xhr,
 						'message': `Error ${xhr.status}: ${xhr.statusText}`
 					});
 				}
@@ -48,7 +48,7 @@ class AsyncRequest {
 			xhr.onerror = () => {
 				reject({
 					'status': false,
-					'data': xhr,
+					'body': xhr,
 					'message': `Network error occured while making the request`
 				});
 			};
