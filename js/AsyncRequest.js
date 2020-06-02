@@ -1,4 +1,4 @@
-class AsyncTask {
+class AsyncRequest {
 	// constructor method
 	constructor (details) {
 		this.url = details.url;
