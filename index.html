@@ -83,7 +83,7 @@
 
 		request.execute().then(response=> {
 			if (response.status) {
-				const data = JSON.parse(response.data);
+				const data = JSON.parse(response.body);
 
 				const countries = data.countries;
 				for(i in countries) {
@@ -128,7 +128,7 @@
 
 		request.execute().then(response=>{
 			if (response.status) {
-				const data = JSON.parse(response.data);
+				const data = JSON.parse(response.body);
 				// console.log(data);
 
 				const updatedDateTime = new Date(data.updatedDateTime);
