@@ -3,7 +3,7 @@ class AsyncRequest {
 	constructor (details) {
 		this.url = details.url;
 		this.method = details.method.toLowerCase();
-		this.body = details.body;
+		this.data = details.data;
 		this.headers = details.headers;
 	}
 
@@ -22,8 +22,8 @@ class AsyncRequest {
 			}
 
 			// send request
-			if (this.method === 'post') {
-				xhr.send(this.body);
+			if (this.method === 'post' || this.method === 'put') {
+				xhr.send(this.data);
 			} else {
 				xhr.send();
 			}
@@ -44,12 +44,12 @@ class AsyncRequest {
 				}
 			};
 
-			// on netowrk error
+			// on request error
 			xhr.onerror = () => {
 				reject({
 					'status': false,
 					'body': xhr,
-					'message': `Network error occured while making the request`
+					'message': `An error occured while making the request`
 				});
 			};
 		});
