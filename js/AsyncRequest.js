@@ -22,10 +22,18 @@ class AsyncRequest {
 			}
 
 			// send request
-			if (this.method === 'post' || this.method === 'put') {
-				xhr.send(this.data);
-			} else {
-				xhr.send();
+			switch (this.method) {
+				case 'get':
+					xhr.send();
+					break;
+				case 'post': case 'put': case 'delete':
+					xhr.send(this.data);
+					break;
+				default:
+					reject({
+						'status': false,
+						'message': `Unsuported HTTP method used`
+					});
 			}
 
 			// on request completion
