@@ -31,8 +31,8 @@ class AsyncRequest {
 					break;
 				default:
 					reject({
-						'status': false,
-						'message': `Unsuported HTTP method used`
+						statusOk: false,
+						message: `unsuported HTTP method used`
 					});
 			}
 
@@ -40,14 +40,14 @@ class AsyncRequest {
 			xhr.onload = () => {
 				if (xhr.status === 200) {
 					resolve({
-						'status': true,
-						'body': xhr.responseText
+						statusOk: true,
+						body: xhr.responseText
 					});
 				} else {
 					reject({
-						'status': false,
-						'body': xhr,
-						'message': `Error ${xhr.status}: ${xhr.statusText}`
+						statusOk: false,
+						body: xhr,
+						message: `error ${xhr.status}: ${xhr.statusText.toLowerCase()}`
 					});
 				}
 			};
@@ -55,9 +55,9 @@ class AsyncRequest {
 			// on request error
 			xhr.onerror = () => {
 				reject({
-					'status': false,
-					'body': xhr,
-					'message': `An error occured while making the request`
+					statusOk: false,
+					body: xhr,
+					message: `an error occured while making the request`
 				});
 			};
 		});
