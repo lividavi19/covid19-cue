@@ -2,169 +2,169 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Covid19Cue</title>
-	<link rel="icon" href="img/icons/icon_256.png">
-	<!-- set PWA -->
-	<link rel="manifest" href="js/manifest.json">
-	<meta name="theme-color" content="#38003c">
-	<!-- end PWA -->
-	<!-- iOS support -->
-	<link rel="apple-touch-icon" href="img/icons/icon_256.png">
-	<meta name="apple-mobile-app-status-bar" content="#38003c">
-	<!-- end iOS support -->
-	<meta name="author" content="David LS(RUCU)">
+	<title>COVID-19</title>
 	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="icon" type="image/png" href="img/icons/ic_192.png">
+	<meta name="description" content="Get informed of the latest information on COVID19 pandemic. Such as overview on cases, how to prevent the spread, how to protect loved ones from the deadly virus, what to do when you suspect others or yourself having the virus and so on">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2">
-	<meta name="description" content="Get informed of the latest information on COVID19 pandemic. Such as overview on cases, how to prevent the spread, how to protect loved ones from the deadly virus, what to do when you suspect others or yourself having the virus and so on. Together we can fight off the deadly virus.">
-	<!-- og tags -->
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="Covid19Cue">
-	<meta property="og:image" content="https://covid19cue.netlify.app/img/icons/icon_256.png">
-	<meta property="og:url" content="https://covid19cue.netlify.app/">
-	<meta property="og:description" content="Get informed of the latest information on COVID19 pandemic. Such as overview on cases, how to prevent the spread, how to protect loved ones from the deadly virus, what to do when you suspect others or yourself having the virus and so on. Together we can fight off the deadly virus.">
-	<!-- ends og tags -->
+	<!-- set PWA -->
+	<link rel="manifest" href="manifest.json">
+	<meta name="theme-color" content="#38003c">
+	<!-- iOS support -->
+	<link rel="apple-touch-icon" href="img/icons/ic_192.png">
+	<meta name="apple-mobile-app-status-bar" content="#38003c">
+	<!-- end PWA -->
 </head>
 <body>
-	<header class="flex_middle theme_bg">
-		<div class="app_icon"><img src="img/icons/icon_256.png" alt="corona virus icon" class="full_dims"></div>
+	<!-- top header -->
+	<header class="theme_bg flex_space_around sticky_top">
+		<div class="logo">
+			<img src="img/icons/ic_192.png" class="full_dims">
+		</div>
 	</header>
-	<select id="select_country" onchange="loadStats(this.value)" class="full_w"></select>
+
+	<!-- options -->
+	<select id="modal" class="full_w" onchange="renderStats(this.value)">
+		<!-- options will be loaded from the srver -->
+		<!-- <option value="tz" selected>Tanzania</option> -->
+	</select>
+
+	<!-- main -->
 	<main>
-		<!-- numbers section -->
-		<section class="case_numbers">
-			<div class="case_container">
-				<span id="total_confirmed_number">...</span>
-				<span>Maambukizi</span>
+		<section class="flex_space_around">
+			<!-- maambukizi -->
+			<div class="full_w flex_space_around">
+				<span id="maambukizi" class="case_number">...</span>
+				<span class="case_title text_uppercase">Maambukizi</span>
 			</div>
-			<div class="case_container">
-				<span id="new_confirmed_number">...</span>
-				<span>Maambukizi mapya</span>
-			</div>
-
-			<div class="case_container">
-				<span id="total_deaths_number">...</span>
-				<span>Vifo</span>
-			</div>
-			<div class="case_container">
-				<span id="new_deaths_number">...</span>
-				<span>Vifo vipya</span>
+			<div class="full_w flex_space_around">
+				<span id="maambukizi_mapya" class="case_number">...</span>
+				<span class="case_title text_uppercase">Maambukizi  Mapya</span>
 			</div>
 
-			<div class="case_container">
-				<span id="total_reccovered_number">...</span>
-				<span>Waliopona</span>
+			<!-- waliopona -->
+			<div class="full_w flex_space_around">
+				<span id="waliopona" class="case_number">...</span>
+				<span class="case_title text_uppercase">Waliopona</span>
 			</div>
-			<div class="case_container">
-				<span id="new_reccovered_number">...</span>
-				<span>Waliopona wapya</span>
+			<div class="full_w flex_space_around">
+				<span id="waliopona_wapya" class="case_number">...</span>
+				<span class="case_title text_uppercase">Waliopona  Wapya</span>
 			</div>
-			<div class="case_container">
-				<span id="last_updated_number">...</span>
-				<span>Last Updated</span>
+
+			<!-- vifo -->
+			<div class="full_w flex_space_around">
+				<span id="vifo" class="case_number">...</span>
+				<span class="case_title text_uppercase">Vifo</span>
+			</div>
+			<div class="full_w flex_space_around">
+				<span id="vifo_vipya" class="case_number">...</span>
+				<span class="case_title text_uppercase">Vifo  Vipya</span>
+			</div>
+
+			<!-- sasishwa -->
+			<div class="full_w flex_space_around">
+				<span id="sasishwa" class="case_number">...</span>
+				<span class="case_title text_uppercase">Sasishwa<!-- Last Updated --></span>
 			</div>
 		</section>
 	</main>
-</body>
-<script defer src="js/base.js"></script>
-<script defer src="js/AsyncRequest.js"></script>
-<script defer src="sw.js"></script>
+<!-- scripts -->
+<script src="js/base.js"></script>
+<script src="js/AsyncRequest.js"></script>
 <script>
-	window.onload = () => {
-		loadCountries();
-		loadStats(`TZ`);
+	window.onload = e => {
+		/* execute everything in this block */
+		// registering a service worker
+		if (navigator.serviceWorker) {
+			navigator.serviceWorker.register('sw.js').catch(error => {
+				consoleWarn(`error registering a service worker`, error);
+			});
+		}
+
+		renderCountries();
+		renderStats(`TZ`);
 	};
 
-	// loadCountries()
-	function loadCountries () {
-		const request = new AsyncRequest({
-			'url': `js/countries.json`,
-			'method': `get`
+	// renderCountries()
+	function renderCountries () {
+		const req = new AsyncRequest({
+			url: `countries.json`,
+			method: `get`
 		});
 
-		request.execute().then(response=> {
-			if (response.status) {
-				const data = JSON.parse(response.body);
+		req.execute().then(res => {
+			// consoleLog(res);
+			if (res.statusOk) {
+				// consoleLog(res);
+				const responseBody = JSON.parse(res.body);
+				// consoleLog(responseBody);
 
-				const countries = data.countries;
-				for(i in countries) {
-					// create new 'option' element, then add 'value' and 'text' attributes to it
-					const country_options = document.createElement(`option`);
-					country_options.value = countries[i].iso2;
-					country_options.text = countries[i].name;
-
-					// pre select tanzania option
-					getNode('#select_country').value = `TZ`;
-
-					// append the #country_options into #select_country
-					getNode('#select_country').appendChild(country_options);
-				}
+				let optionTemplate = ``;
+				responseBody.countries.forEach(country => {
+					optionTemplate += `
+					<option value="${country.iso2}">${country.name}</option>
+					`;
+				});
+				getNode(`select`).innerHTML = optionTemplate;
+				getNode(`select`).value = `TZ`;
 			} else {
-				// error occured
-				console.log(response);
+				consoleWarn(`request status not ok`);
 			}
-		}).catch(error=>{
-			// error occured
-			console.log(error);
+		}).catch(err => {
+			consoleWarn(`request error`);
 		});
 	}
 
-	// loadStats()
-	function loadStats (location) {
-		getNode('#total_confirmed_number').innerText=`...`;
-		getNode('#new_confirmed_number').innerText=`...`;
-		getNode('#total_reccovered_number').innerText=`...`;
-		getNode('#new_reccovered_number').innerText=`...`;
-		getNode('#total_deaths_number').innerText=`...`;
-		getNode('#new_deaths_number').innerText=`...`;
-		getNode('#last_updated_number').innerText=`...`;
-		const request = new AsyncRequest({
-			'url': `https://api.smartable.ai/coronavirus/stats/${location}`,
-			'method': `get`,
-			'headers': {
+	// renderStats()
+	function renderStats (location) {
+		// display a loading sign
+		setText(`.case_number`, `...`);
+
+		const req = new AsyncRequest({
+			url: `https://api.smartable.ai/coronavirus/stats/${location}`,
+			method: `get`,
+			headers: {
 				'Cache-Control': `no-cache`,
-				'Subscription-Key': `REPLACE_WITH_YOUR_API_KEY`
+				'Subscription-Key': `b0aaacac86f44d898bf1b2df828f61dc`
 			}
 		});
 
-		request.execute().then(response=>{
-			if (response.status) {
-				const data = JSON.parse(response.body);
-				// console.log(data);
+		req.execute().then(res => {
+			// consoleLog(res);
+			if (res.statusOk) {
+				// consoleLog(res);
+				const responseBody = JSON.parse(res.body);
+				// consoleLog(responseBody);
 
-				const updatedDateTime = new Date(data.updatedDateTime);
-				const formated_date_time = `${updatedDateTime.getFullYear()}-${preppendZero((updatedDateTime.getMonth()+1))}-${preppendZero(updatedDateTime.getDate())} ${preppendZero(updatedDateTime.getHours())}:${preppendZero(updatedDateTime.getMinutes())}:${preppendZero(updatedDateTime.getSeconds())}`;
-
-				getNode('#total_confirmed_number').innerText=data.stats.totalConfirmedCases;
-				getNode('#new_confirmed_number').innerText=data.stats.newlyConfirmedCases;
-				getNode('#total_reccovered_number').innerText=data.stats.totalRecoveredCases;
-				getNode('#new_reccovered_number').innerText=data.stats.newlyRecoveredCases;
-				getNode('#total_deaths_number').innerText=data.stats.totalDeaths;
-				getNode('#new_deaths_number').innerText=data.stats.newDeaths;
-				getNode('#last_updated_number').innerText=formated_date_time;
+				// maambukizi
+				getNode(`#maambukizi`).textContent = `${responseBody.stats.totalConfirmedCases}`;
+				getNode(`#maambukizi_mapya`).textContent = `${responseBody.stats.newlyConfirmedCases}`;
+				// waliopona
+				getNode(`#waliopona`).textContent = `${responseBody.stats.totalRecoveredCases}`;
+				getNode(`#waliopona_wapya`).textContent = `${responseBody.stats.newlyRecoveredCases}`;
+				// vifo
+				getNode(`#vifo`).textContent = `${responseBody.stats.totalDeaths}`;
+				getNode(`#vifo_vipya`).textContent = `${responseBody.stats.newDeaths}`;
+				// sasishwa
+				const sasishwaMuda = new Date(responseBody.updatedDateTime);
+				getNode(`#sasishwa`).textContent = `${sasishwaMuda.getFullYear()}-${preppendZero(sasishwaMuda.getMonth()+1)}-${preppendZero(sasishwaMuda.getDate())}, ${preppendZero(sasishwaMuda.getHours())}:${preppendZero(sasishwaMuda.getMinutes())}:${preppendZero(sasishwaMuda.getSeconds())}`;
 			} else {
-				// error occured
-				console.log(response);
-
-				getNode('#total_confirmed_number').innerText=`-`;
-				getNode('#new_confirmed_number').innerText=`-`;
-				getNode('#total_reccovered_number').innerText=`-`;
-				getNode('#new_reccovered_number').innerText=`-`;
-				getNode('#total_deaths_number').innerText=`-`;
-				getNode('#new_deaths_number').innerText=`-`;
-				getNode('#last_updated_number').innerText=`-`;
+				consoleWarn(`request status not ok`);
+				setText(`.case_number`, `-`);
 			}
-		}).catch(error=>{
-			// error occured
-			console.log(error);
+		}).catch(err => {
+			consoleWarn(`${err.message}`);
+			setText(`.case_number`, `-`);
+		});
+	}
 
-			getNode('#total_confirmed_number').innerText=`-`;
-			getNode('#new_confirmed_number').innerText=`-`;
-			getNode('#total_reccovered_number').innerText=`-`;
-			getNode('#new_reccovered_number').innerText=`-`;
-			getNode('#total_deaths_number').innerText=`-`;
-			getNode('#new_deaths_number').innerText=`-`;
-			getNode('#last_updated_number').innerText=`-`;
+	// stting lents' textContent
+	function setText (classNode, displayText) {
+		getNodes(`${classNode}`).forEach(node => {
+			node.textContent = `${displayText}`;
 		});
 	}
 </script>
+</body>
 </html>
