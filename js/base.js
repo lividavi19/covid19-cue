@@ -1,21 +1,9 @@
+// get element(s) reference 
 function getNode (e) {return document.querySelector(e);}
-function consoleLog (e) {console.log(e);}
-function hideNode (e) {e.style.display='none';}
-function showFlexNode(e) {e.style.display='flex';}
-function showBlockNode (e) {e.style.display='block';}
-function nodeFlexVisible (e) {e.style.display=='flex';}
-function nodeBlockVisible (e) {e.style.display=='block';}
-function nodeHidden (e) {e.style.display=='none';}
+function getNodes (e) {return document.querySelectorAll(e);}
+// log on the console
+function consoleLog (e) {console.log(e)}
+function consoleWarn (e) {console.warn(e)}
+function consoleError (e) {console.error(e)}
+// prepnd zero on number<10
 function preppendZero (i) {return i<10 ? `0${i}` : i}
-
-// register a service worker
-function registerServiceWorker () {
-	if ('serviceWorker' in navigator) {
-		window.addEventListener('load', () => {
-			navigator.serviceWorker.register('sw.js')
-				//.then((reg) => console.log('service worker registered', reg))
-				.catch((err) => console.log('error registering a service worker', err));
-		});
-	}
-}
-registerServiceWorker();
