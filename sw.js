@@ -1,5 +1,5 @@
-const STATIC_VERSION = 2;
-const DYNAMIC_VERSION = 1;
+const STATIC_VERSION = 1;
+const DYNAMIC_VERSION = 2;
 const STATIC_CACHE = `static-${STATIC_VERSION}://covid19cue.netlify.app`;
 const DYNAMIC_CACHE = `dynamic-${DYNAMIC_VERSION}://covid19cue.netlify.app`;
 const APP_SHELL = [
