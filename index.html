@@ -24,7 +24,7 @@
 	</header>
 
 	<!-- options -->
-	<select id="modal" class="full_w" onchange="renderStats(this.value)">
+	<select id="modal" class="full_w" onchange="renderStatistics(this.value)">
 		<!-- options will be loaded from the srver -->
 		<!-- <option value="tz" selected>Tanzania</option> -->
 	</select>
@@ -71,7 +71,7 @@
 	</main>
 <!-- scripts -->
 <script src="js/base.js"></script>
-<script src="js/AsyncRequest.js"></script>
+<script src="js/render.js"></script>
 <script>
 	window.onload = e => {
 		/* execute everything in this block */
@@ -83,88 +83,8 @@
 		}
 
 		renderCountries();
-		renderStats(`TZ`);
+		renderStatistics(`TZ`);
 	};
-
-	// renderCountries()
-	function renderCountries () {
-		const req = new AsyncRequest({
-			url: `countries.json`,
-			method: `get`
-		});
-
-		req.execute().then(res => {
-			// consoleLog(res);
-			if (res.statusOk) {
-				// consoleLog(res);
-				const responseBody = JSON.parse(res.body);
-				// consoleLog(responseBody);
-
-				let optionTemplate = ``;
-				responseBody.countries.forEach(country => {
-					optionTemplate += `
-					<option value="${country.iso2}">${country.name}</option>
-					`;
-				});
-				getNode(`select`).innerHTML = optionTemplate;
-				getNode(`select`).value = `TZ`;
-			} else {
-				consoleWarn(`request status not ok`);
-			}
-		}).catch(err => {
-			consoleWarn(`request error`);
-		});
-	}
-
-	// renderStats()
-	function renderStats (location) {
-		// display a loading sign
-		setText(`.case_number`, `...`);
-
-		const req = new AsyncRequest({
-			url: `https://api.smartable.ai/coronavirus/stats/${location}`,
-			method: `get`,
-			headers: {
-				'Cache-Control': `no-cache`,
-				'Subscription-Key': `API_KEY`
-			}
-		});
-
-		req.execute().then(res => {
-			// consoleLog(res);
-			if (res.statusOk) {
-				// consoleLog(res);
-				const responseBody = JSON.parse(res.body);
-				// consoleLog(responseBody);
-
-				// maambukizi
-				getNode(`#maambukizi`).textContent = `${responseBody.stats.totalConfirmedCases}`;
-				getNode(`#maambukizi_mapya`).textContent = `${responseBody.stats.newlyConfirmedCases}`;
-				// waliopona
-				getNode(`#waliopona`).textContent = `${responseBody.stats.totalRecoveredCases}`;
-				getNode(`#waliopona_wapya`).textContent = `${responseBody.stats.newlyRecoveredCases}`;
-				// vifo
-				getNode(`#vifo`).textContent = `${responseBody.stats.totalDeaths}`;
-				getNode(`#vifo_vipya`).textContent = `${responseBody.stats.newDeaths}`;
-				// sasishwa
-				const sasishwaMuda = new Date(responseBody.updatedDateTime);
-				getNode(`#sasishwa`).textContent = `${sasishwaMuda.getFullYear()}-${preppendZero(sasishwaMuda.getMonth()+1)}-${preppendZero(sasishwaMuda.getDate())}, ${preppendZero(sasishwaMuda.getHours())}:${preppendZero(sasishwaMuda.getMinutes())}:${preppendZero(sasishwaMuda.getSeconds())}`;
-			} else {
-				consoleWarn(`request status not ok`);
-				setText(`.case_number`, `-`);
-			}
-		}).catch(err => {
-			consoleWarn(`${err.message}`);
-			setText(`.case_number`, `-`);
-		});
-	}
-
-	// stting lents' textContent
-	function setText (classNode, displayText) {
-		getNodes(`${classNode}`).forEach(node => {
-			node.textContent = `${displayText}`;
-		});
-	}
 </script>
 </body>
 </html>
