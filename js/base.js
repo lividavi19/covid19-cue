@@ -1,9 +1,16 @@
 // get element(s) reference 
-function getNode (e) {return document.querySelector(e);}
-function getNodes (e) {return document.querySelectorAll(e);}
+const getNode = (e) => {return document.querySelector(e);};
+const getNodes = (e) => {return document.querySelectorAll(e);};;
 // log on the console
-function consoleLog (e) {console.log(e)}
-function consoleWarn (e) {console.warn(e)}
-function consoleError (e) {console.error(e)}
+const consoleLog = (e) => {console.log(e)};
+const consoleWarn = (e) => {console.warn(e)};
+const consoleError = (e) => {console.error(e)};
 // prepnd zero on number<10
-function preppendZero (i) {return i<10 ? `0${i}` : i}
+const preppendZero = (i) => {return i<10 ? `0${i}` : i};
+
+// stting lents' textContent
+const setText = (classNode, displayText) => {
+    getNodes(`${classNode}`).forEach(node => {
+        node.textContent = `${displayText}`;
+    });
+};
